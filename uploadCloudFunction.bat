@@ -1,0 +1,1 @@
+"E:\weixinkaifa\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-3gno5hc9c1fabe43 --n quickstartFunctions --r --project "E:\#Cyw\STUDY\Task\miniProgram" --report
