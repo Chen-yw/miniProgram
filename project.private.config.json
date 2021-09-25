@@ -13,50 +13,21 @@
     "miniprogram": {
       "list": [
         {
-          "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        },
-        {
-          "name": "pages/getOpenId/index",
-          "pathName": "pages/getOpenId/index",
+          "name": "我的页面",
+          "pathName": "pages/profile/profile",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/deployService/index",
-          "pathName": "pages/deployService/index",
+          "name": "分类页面",
+          "pathName": "pages/category/category",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/selectRecord/index",
-          "pathName": "pages/selectRecord/index",
+          "name": "购物车页面",
+          "pathName": "pages/cart/cart",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/sumRecordResult/index",
-          "pathName": "pages/sumRecordResult/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecord/index",
-          "pathName": "pages/updateRecord/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecordResult/index",
-          "pathName": "pages/updateRecordResult/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecordSuccess/index",
-          "pathName": "pages/updateRecordSuccess/index",
           "scene": null
         }
       ]

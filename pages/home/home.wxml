@@ -1,0 +1,36 @@
+<!-- wxml页面写布局 -->
+
+
+<!-- 1.小程序的数据绑定 Mustache语法 引用变量并且可以进行简单的运算-->
+<view>== 1.小程序的数据绑定 Mustache语法 ==</view>
+<view>Hello {{name}}</view>
+<view>我的年龄：{{age}}</view>
+
+
+<!-- 2.列表展示 wx:for -->
+<view>======= 2.列表展示 wx:for =======</view>
+<view>{{students[0]}}</view>
+<view>{{students[0].name}}</view>
+<!-- 遍历字符串 -->
+<view wx:for="students" wx:key="key">{{item}}</view>
+<!-- 遍历列表 -->
+<view wx:for="{{students}}" wx:key="key">{{item.id}}-{{item.name}}-{{item.age}}</view>
+
+<!-- 3.事件监听改变data中的数据 -->
+<view>==== 3.事件监听改变data中的数据 ====</view>
+<view>当前计数：{{counter}}</view>
+<button size="mini" bindtap="handleBtnClick">+</button>
+<button size="mini" bindtap="handleBtnsub">-</button>
+
+<view>======== 4.获取用户信息 ========</view>
+<!-- 获取用户信息的三种方式，
+    1，使用wx.getUserInfo() 方法
+    2，设置属性 open-type="getUserInfo" 并且绑定事件bindgetuserinfo="handleGetUserInfo"
+    3，利用open-data内置组件展示用户信息
+-->
+<button size="mini" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">获取授权</button>
+<open-data type="userNickName"></open-data>
+<open-data type="userAvatarUrl"></open-data>
+
+<view>======== 5.使用全局数据 ========</view>
+<view>==== 6.注册页面的时候所做的事情 ====</view>
