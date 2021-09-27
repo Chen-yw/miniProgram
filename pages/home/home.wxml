@@ -1,136 +1,166 @@
 <!-- wxml页面写布局 -->
 
-<tab-control 
-    titles="{{['流行', '新品', '精品']}}"
-    bind:itemClick="handleTabClick"
-/>
 
 
-<view>=== 13.使用自定义组件 ===</view>
-<!-- 自定义组件的标签名只能是小写字母、中划线和下划线 -->
-<my-cpn></my-cpn>
-<my-cpn/>
-
-<view>=== 12.wxs定义方式 ===</view>
-<!-- wxs代码的写法一 -->
-<wxs module="info">
-    // 写js代码 支持es5
-    var message = "Hello Worle!";
-    var name = "coderwhy";
-    var sun = function(num1, num2) {
-        return num1 + num2;
-    }
-
-    module.exports = {
-        message: message,
-        name: name,
-        sun: sun
-    }
-</wxs>
-<view>{{info.message}}</view>
-<view>{{info.name}}</view>
-<view>{{info.sun(2,3)}}</view>
-<!-- wxs代码的写法二，在.wxs文件中写代码，然后用<wxs src="相对路径" module="模块名"/>标签引入 -->
-<!-- wxs的应用：  -->
+<view hidden>
+    <view>=== 17.界面跳转 ===</view>
+    <navigator url="/pages/detail/detail">跳转详情页(默认跳转)</navigator>
+    <!-- open-type属性: 
+            redirect 重定向，跳转前的页面会被销毁
+            switchTab 跳转至tabbar中的页面
+            reLaunch 关闭除目的页面的所有页面
+            navigateBack 返回
+    -->
+    <!-- delta属性： 返回的层级 delta="2"表示返回两层 -->
+    <navigator url="/pages/detail/detail" open-type="redirect">跳转详情页（redirect）</navigator>
+    <navigator url="/pages/cart/cart" open-type="switchTab">跳转购物车（switchTab）</navigator>
+    <navigator url="/pages/detail/detail" open-type="reLaunch">跳转详情页（reLaunch）</navigator>
+    <!-- 跳转页面同时传递数据 -->
+    <navigator url="/pages/detail/detail?name=why&age=18&heigth=1.88" >跳转详情页（传递数据）</navigator>
+    <!-- 页面退出的时候传递数据，在页面的onUnload声明周期函数中 -->
 
 
-<view>=== 11.小程序中 template复用代码 ===</view>
-<!-- 
-    之前的时候小程序不支持自定义组件，为了进行代码的复用，使用模板 template 
-    模板中的内容在没有被使用之前不会被渲染
-    import 可以导入模板，但不可以递归（套娃）式导入
-    include 可以将目标文件中除了 <template/> <wxs/> 外的整个wxml代码引入，将代码引入到
-    include所在的位置，可以进行套娃导入
--->
-<template name="contentItem">
-<button size="mini">按钮{{btnText}}</button>
-<view>哈哈哈哈{{content}}</view>
-</template>
 
-<template is="contentItem" data="{{btnText: 'anniu', content: 'lalalal'}}"/>
+    <view>=== 16.登录流程 ===</view>
+
+    <view>=== 15.吐司 toast ===</view>
+    <button size="mini" bind:tap="handleShowToast">showToast</button>
 
 
-<view>==== 10.wxss中的单位： rpx ipone6屏幕中1px == 2rpx ====</view>
-<view class="box1"></view>
-<view class="box2"></view>
+    <view>=== 14.网络请求的封装 ===</view>
 
-<view>==== 9.设置样式的三种方式 ====</view>
-<view class="box">哈哈哈</view>
-<!-- 1.行内样式 -->
-<view style="color: red; font-size: 32px;">哈哈哈</view>
-<!-- 2.页内样式 -->
-<view class="box">哈哈哈</view>
-<!-- 3.全局样式 在app.wxss中设置-->
-<view class="container">嘿嘿嘿</view>
+    <tab-control 
+        titles="{{['流行', '新品', '精品']}}"
+        bind:itemClick="handleTabClick"
+    />
+
+    <view>=== 13.使用自定义组件 ===</view>
+    <!-- 自定义组件的标签名只能是小写字母、中划线和下划线 -->
+    <my-cpn></my-cpn>
+    <my-cpn/>
+
+    <view>=== 12.wxs定义方式 ===</view>
+    <!-- wxs代码的写法一 -->
+    <wxs module="info">
+        // 写js代码 支持es5
+        var message = "Hello Worle!";
+        var name = "coderwhy";
+        var sun = function(num1, num2) {
+            return num1 + num2;
+        }
+
+        module.exports = {
+            message: message,
+            name: name,
+            sun: sun
+        }
+    </wxs>
+    <view>{{info.message}}</view>
+    <view>{{info.name}}</view>
+    <view>{{info.sun(2,3)}}</view>
+    <!-- wxs代码的写法二，在.wxs文件中写代码，然后用<wxs src="相对路径" module="模块名"/>标签引入 -->
+    <!-- wxs的应用：  -->
 
 
-<view>==== 8.内置组件 button ====</view>
-<button>按钮</button>
-<button size="mini">按钮</button>
-<button size="mini" type="default">按钮</button>
-<button size="mini" type="primary">按钮</button>
-<button size="mini" type="warn">按钮</button>
-<button size="mini" type="default" plain>按钮</button>
-<button size="mini" type="default" plain disabled="true">按钮</button>
-<button size="mini" type="default" plain disabled="true" loading="true">按钮</button>
-<button hover-class="pressed">按钮</button>
+    <view>=== 11.小程序中 template复用代码 ===</view>
+    <!-- 
+        之前的时候小程序不支持自定义组件，为了进行代码的复用，使用模板 template 
+        模板中的内容在没有被使用之前不会被渲染
+        import 可以导入模板，但不可以递归（套娃）式导入
+        include 可以将目标文件中除了 <template/> <wxs/> 外的整个wxml代码引入，将代码引入到
+        include所在的位置，可以进行套娃导入
+    -->
+    <template name="contentItem">
+    <button size="mini">按钮{{btnText}}</button>
+    <view>哈哈哈哈{{content}}</view>
+    </template>
+
+    <template is="contentItem" data="{{btnText: 'anniu', content: 'lalalal'}}"/>
 
 
-<view>==== 7.内置组件 text 相当于span ====</view>
-<!-- 
-    1，基本使用
-    2，默认情况下text中的文字不能长按被选中，如需要需添加属性selectable
-    3，space属性，用来决定文本空格的大小
-        nbsp： 默认空格大小
-        ensp： 半个中文字符大小
-        emsp： 一个中文字符大小
-    4，decode属性：是否解码文本
-        &gt; 大于号的编码
- -->
-<text>Hello World\n</text>
-<text>你好小程序\n</text>
-<!-- <text selectable="true">Hello Coderwhy\n</text> -->
-<text user-select="true">Hello Coderwhy\n</text>
-<text>Hello World\n</text>
-<text space="nbsp">Hello World\n</text>
-<text space="ensp">Hello World\n</text>
-<text space="emsp">Hello World\n</text>
-<text decode="true">5 &gt; 3 \n</text>
-<text decode>5 &gt; 3</text>
+    <view>==== 10.wxss中的单位： rpx ipone6屏幕中1px == 2rpx ====</view>
+    <view class="box1"></view>
+    <view class="box2"></view>
 
-<view>==== 6.注册页面的时候所做的事情 ====</view>
+    <view>==== 9.设置样式的三种方式 ====</view>
+    <view class="box">哈哈哈</view>
+    <!-- 1.行内样式 -->
+    <view style="color: red; font-size: 32px;">哈哈哈</view>
+    <!-- 2.页内样式 -->
+    <view class="box">哈哈哈</view>
+    <!-- 3.全局样式 在app.wxss中设置-->
+    <view class="container">嘿嘿嘿</view>
 
-<view>======== 5.使用全局数据 ========</view>
 
-<view>======== 4.获取用户信息 ========</view>
-<!-- 获取用户信息的三种方式，
-    1，使用wx.getUserInfo() 方法
-    2，设置属性 open-type="getUserInfo" 并且绑定事件bindgetuserinfo="handleGetUserInfo"
-    3，利用open-data内置组件展示用户信息
--->
-<button size="mini" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">获取授权</button>
-<open-data type="userNickName"></open-data>
-<open-data type="userAvatarUrl"></open-data>
+    <view>==== 8.内置组件 button ====</view>
+    <button>按钮</button>
+    <button size="mini">按钮</button>
+    <button size="mini" type="default">按钮</button>
+    <button size="mini" type="primary">按钮</button>
+    <button size="mini" type="warn">按钮</button>
+    <button size="mini" type="default" plain>按钮</button>
+    <button size="mini" type="default" plain disabled="true">按钮</button>
+    <button size="mini" type="default" plain disabled="true" loading="true">按钮</button>
+    <button hover-class="pressed">按钮</button>
 
-<!-- 3.事件监听改变data中的数据 -->
-<view>==== 3.事件监听改变data中的数据 ====</view>
-<view>当前计数：{{counter}}</view>
-<button size="mini" bindtap="handleBtnClick">+</button>
-<button size="mini" bindtap="handleBtnsub">-</button>
 
-<!-- 2.列表展示 wx:for -->
-<view>======= 2.列表展示 wx:for =======</view>
-<view>{{students[0]}}</view>
-<view>{{students[0].name}}</view>
-<!-- 遍历字符串 -->
-<view wx:for="students" wx:key="key">{{item}}</view>
-<!-- 遍历列表 -->
-<view wx:for="{{students}}" wx:key="key">{{item.id}}-{{item.name}}-{{item.age}}</view>
+    <view>==== 7.内置组件 text 相当于span ====</view>
+    <!-- 
+        1，基本使用
+        2，默认情况下text中的文字不能长按被选中，如需要需添加属性selectable
+        3，space属性，用来决定文本空格的大小
+            nbsp： 默认空格大小
+            ensp： 半个中文字符大小
+            emsp： 一个中文字符大小
+        4，decode属性：是否解码文本
+            &gt; 大于号的编码
+    -->
+    <text>Hello World\n</text>
+    <text>你好小程序\n</text>
+    <!-- <text selectable="true">Hello Coderwhy\n</text> -->
+    <text user-select="true">Hello Coderwhy\n</text>
+    <text>Hello World\n</text>
+    <text space="nbsp">Hello World\n</text>
+    <text space="ensp">Hello World\n</text>
+    <text space="emsp">Hello World\n</text>
+    <text decode="true">5 &gt; 3 \n</text>
+    <text decode>5 &gt; 3</text>
 
-<!-- 1.小程序的数据绑定 Mustache语法 引用变量并且可以进行简单的运算-->
-<view>== 1.小程序的数据绑定 Mustache语法 ==</view>
-<view>Hello {{name}}</view>
-<view>我的年龄：{{age}}</view>
+    <view>==== 6.注册页面的时候所做的事情 ====</view>
+
+    <view>======== 5.使用全局数据 ========</view>
+
+    <view>======== 4.获取用户信息 ========</view>
+    <!-- 获取用户信息的三种方式，
+        1，使用wx.getUserInfo() 方法
+        2，设置属性 open-type="getUserInfo" 并且绑定事件bindgetuserinfo="handleGetUserInfo"
+        3，利用open-data内置组件展示用户信息
+    -->
+    <button size="mini" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">获取授权</button>
+    <open-data type="userNickName"></open-data>
+    <open-data type="userAvatarUrl"></open-data>
+
+    <!-- 3.事件监听改变data中的数据 -->
+    <view>==== 3.事件监听改变data中的数据 ====</view>
+    <view>当前计数：{{counter}}</view>
+    <button size="mini" bindtap="handleBtnClick">+</button>
+    <button size="mini" bindtap="handleBtnsub">-</button>
+
+    <!-- 2.列表展示 wx:for -->
+    <view>======= 2.列表展示 wx:for =======</view>
+    <view>{{students[0]}}</view>
+    <view>{{students[0].name}}</view>
+    <!-- 遍历字符串 -->
+    <view wx:for="students" wx:key="key">{{item}}</view>
+    <!-- 遍历列表 -->
+    <view wx:for="{{students}}" wx:key="key">{{item.id}}-{{item.name}}-{{item.age}}</view>
+
+    <!-- 1.小程序的数据绑定 Mustache语法 引用变量并且可以进行简单的运算-->
+    <view>== 1.小程序的数据绑定 Mustache语法 ==</view>
+    <view>Hello {{name}}</view>
+    <view>我的年龄：{{age}}</view>
+</view>
+
 
 
 

@@ -45,32 +45,32 @@ Component({
   // 1，监听所在页面的生命周期
   pageLifetimes: {
     show() {
-      console.log("组件所在页面显示出来时触发");
+      // console.log("组件所在页面显示出来时触发");
     },
     hide() {
-      console.log('组件所在页面隐藏起来时触发');
+      // console.log('组件所在页面隐藏起来时触发');
     },
     resize() {
-      console.log('组件所在页面的尺寸改变时触发');
+      // console.log('组件所在页面的尺寸改变时触发');
     }
   },
 
   // 2，监听组件本身的生命周期
   lifetimes: {
     created() {
-      console.log('组件被创建出来时调用');
+      // console.log('组件被创建出来时调用');
     },
     attached() {
-      console.log('组件被添加到页面或组件中时调用');
+      // console.log('组件被添加到页面或组件中时调用');
     },
     ready() {
-      console.log('组件被渲染出来时调用');
+      // console.log('组件被渲染出来时调用');
     },
     moved() {
-      console.log('组件被移动到另外一个节点时调用');
+      // console.log('组件被移动到另外一个节点时调用');
     },
     detached() {
-      console.log('组件被移除掉时调用');
+      // console.log('组件被移除掉时调用');
     }
   }
 })

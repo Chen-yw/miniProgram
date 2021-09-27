@@ -3,7 +3,9 @@
     "pages/home/home",
     "pages/cart/cart",
     "pages/profile/profile",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/detail/detail"
+
   ],
   "window": {
     "navigationBarBackgroundColor": "#ff5777",

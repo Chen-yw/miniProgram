@@ -1,11 +1,68 @@
 // 注册一个小程序
 App({
-
+  globalData: {
+    token: ''
+  },
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
-    
+    // 1,先从缓存中取出token
+    const token = wx.getStorageSync('token');
+
+    // 2,判断token是否有值
+    if (token && token.length !== 0) { // 已经有token，验证token是否过期
+      // 验证token是否过期
+      // this.check_token(token);
+
+    } else { // 没有token，进行登录操作
+      // this.login();
+    }
+  },
+
+  // 登录操作
+  login() {
+    wx.login({
+      timeout: 500,
+      // code只有5分钟的有效期
+      success: (res) => {
+        // 1，获取code
+        const code = res.code;
+        // 2，将code发送给服务器
+        wx.request({
+          url: 'http://123.207.32.32:3000/login',
+          data: {
+            code
+          },
+          success: (res) => {
+            // 3，取出token
+            const token = res.data.token;
+            // 4，将token保存在globalData
+            this.globalData.token = token;
+            // 5，进行本地存储
+            wx.setStorageSync('token', token)
+          }
+        })
+      }
+    })
+  },
+
+  // 验证token是否过期
+  check_token() {
+    wx.request({
+      url: 'http://123.207.32.32:3000/auth',
+      method: 'POST',
+      header: {
+        token
+      },
+      success: (res) => {
+        console.log(res);
+        this.globalData.token = token;
+      },
+      fail: (err) => {
+        this.login();
+      }
+    })
   },
 
   /**
