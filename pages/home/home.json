@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "my-cpn": "/components/my-cpn/my-cpn",
+    "tab-control": "/components/tab-control/tab-control"
+  },
   "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "dark",
   "enablePullDownRefresh": true

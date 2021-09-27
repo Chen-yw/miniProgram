@@ -75,5 +75,17 @@ Page({
   onPageScroll(obj) {},
 
   // 监听页面滚动到底部
-  onReachBottom() {}
+  onReachBottom() {},
+
+  handleTabClick(event) {
+    // console.log(event);
+  }
 })
+
+/* wxs 是不同于JavaScript的语言，基本是一致
+   wxml中不能直接调用page，component中定义的函数
+
+   WXS的运行环境和其他JavaScript 代码是隔离的, WXS中不能调用其他JavaScript 文件中定义的函数，也不能调用小程序提供的APl。
+   WXS 函数不能作为组件的事件回调。
+   由于运行环境的差异,在iOS 设备上小程序内的WXS 会比JavaScript 代码快2～20倍。在android 设备上二者运行效率无差异。
+*/
