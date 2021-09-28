@@ -3,7 +3,7 @@
   display: flex;
   height: 88rpx;
   align-items: center;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .tab_item {

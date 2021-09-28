@@ -1,0 +1,61 @@
+/* pages/home/childCpns/w-goods-item/w-goods-item.wxss */
+.good-item {
+  color: #333;
+  text-align: center;
+  padding-bottom: 85rpx;
+}
+
+.img {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.desc-info {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10rpx;
+
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.info {
+  font-size: 26rpx;
+}
+
+.info .price {
+  color: #ff5777;
+  padding-right: 10rpx;
+}
+
+.info .icon {
+  /* width: 30rpx;
+  height: 30rpx;
+  padding: 0 6rpx 0 10rpx;
+  position: relative;
+  top: 5rpx; */
+}
+
+.cfav {
+  /* padding-left: 10rpx; */
+  position: relative;
+}
+
+/* 注意事项: 在wxss中不能引用本地图片,只能引用网络图片 */
+/* .cfav::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: -1px;
+  width: 14px;
+  height: 14px;
+  background: url("/assets/common/favor.png") 0 0/14px 14px;
+} */

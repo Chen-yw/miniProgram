@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "my-cpn": "/components/my-cpn/my-cpn",
-    "tab-control": "/components/tab-control/tab-control"
+    "w-swiper": "/components/w-swiper/w-swiper",
+    "w-recommend": "/pages/home/childCpns/w-recommend/w-recommend",
+    "tab-control": "/components/tab-control/tab-control",
+    "w-goods-item": "/pages/home/childCpns/w-goods-item/w-goods-item"
   },
   "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "dark",

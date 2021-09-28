@@ -1,5 +1,6 @@
  /* 创建page及对象 js文件写逻辑 */
-import {getMultiData} from '../../service/home.js'
+import {getMultiData, getGoodsData} from '../../service/home.js'
+const types = ['pop', 'new', 'sell']
 
 Page({
 
@@ -8,7 +9,14 @@ Page({
    */
   data: {
     banners: [],
-    recommend: []
+    recommends: [],
+    currentTabConIndex: 0,
+    goods: {
+      pop: {page: 0, list: []},
+      new: {page: 0, list: []},
+      sell: {page: 0, list: []}
+    },
+    currentType: 'pop'
   },
 
   /**
@@ -16,17 +24,48 @@ Page({
    */
   onLoad: function (options) {
     console.log('onLoad');
+    // 请求轮播图推荐数据
+    this._getMultiData();
+    // 请求商品数据
+    this._getGoodsData('pop');
+    this._getGoodsData('new');
+    this._getGoodsData('sell');
+  },
+
+  // 请求数据
+  _getMultiData() {
     getMultiData().then(res => {
       // console.log(res);
       const banners = res.data.data.banner.list;
-      const recommend = res.data.data.recommend.list;
+      const recommends = res.data.data.recommend.list;
       this.setData({
         banners: banners,
-        recommend: recommend
+        recommends: recommends
       })
-    }).catch(err => {
-      
-    });
+    }).catch(err => {});
+  },
+
+  _getGoodsData(type) {
+    const page = this.data.goods[type].page + 1;
+    getGoodsData(type,page).then(res => {
+      // console.log(res);
+      // 取出数据
+      const list = res.data.data.list;
+      // for (let item of list) {
+      //   this.data.goods[type].list.push(item);
+      // }
+      // 将数据设置到对应type的list中
+      const oldList = this.data.goods[type].list;
+      oldList.push(...list);
+      // 将数据设置到goods中的数据中
+      const typeKey = `goods.${type}.list`;
+      const pageKey = `goods.${type}.page`;
+      this.setData({
+        [typeKey]: oldList,
+        [pageKey]: page
+      })
+     
+    }).catch(err => {})
   },
 
   /**
@@ -68,7 +107,17 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    switch(this.data.currentType) {
+      case 'pop': 
+        this._getGoodsData('pop');
+        break;
+      case 'new': 
+        this._getGoodsData('new');
+        break;
+      case 'sell': 
+        this._getGoodsData('sell');
+        break;
+    }
   },
 
   /**
@@ -76,8 +125,31 @@ Page({
    */
   onShareAppMessage: function () {
     
-  }
-})
+  },
+
+  // tabControl被点击
+  handleTabClick(event) {
+    const index = event.detail.index;
+    // switch(index) {
+    //   case 0:
+    //     this.data.currentType = 'pop';
+    //     break;
+    //   case 1:
+    //     this.data.currentType = 'new';
+    //     break;
+    //   case 2:
+    //     this.data.currentType = 'sell';
+    //     break;
+    // }
+    const type = types[index];
+    this.setData({
+      currentType: type
+    })
+    console.log(this.data.currentType);
+  },
+
+  
+})                                    
 
 
 // // getApp()获取add.js中APP()产生的示例对象，保存着APP({})中的数据

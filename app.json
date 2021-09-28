@@ -5,7 +5,6 @@
     "pages/profile/profile",
     "pages/category/category",
     "pages/detail/detail"
-
   ],
   "window": {
     "navigationBarBackgroundColor": "#ff5777",

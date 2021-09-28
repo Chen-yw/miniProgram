@@ -1,4 +1,21 @@
-.pressed {
+.img {
+  width: 100%;
+}
+
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+
+
+.goods > .item {
+  width: 48%;
+  position: relative;
+}
+
+/* .pressed {
   background-color: red;
   color: white;
 }
@@ -13,4 +30,5 @@
   width: 200rpx;
   height: 200rpx;
   background-color: blue;
-}
+} */
+
