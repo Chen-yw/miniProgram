@@ -1,14 +1,46 @@
 // pages/detail/detail.js
+import {getDetail, Goods, Shop, GoodsParam} from "../../service/netDetail"
 Page({
 
   /*** 页面的初始数据 ***/
   data: {
-    
+    titles: ["商品", "参数", "评论", "推荐"],
+    swiperImg: [],
+    goodsBaseInfo: {},
+    shop: {},
   },
 
   /*** 生命周期函数--监听页面加载 ***/
   onLoad: function (options) {
-    
+    // console.log(options);
+    const iid = options.iid;
+    this.getDetail(iid);
+  },
+
+  getDetail(iid) {
+    getDetail(iid).then(res => {
+      // 1，取出全部数据
+      const data = res.data.result;
+      console.log(res);
+      const topImages = data.itemInfo.topImages
+      this.setData({
+        swiperImg: topImages
+      })
+
+      // 商品基础信息
+      const goods = new Goods(data.itemInfo, data.columns, data.shopInfo);
+      this.setData({
+        goodsBaseInfo: goods
+      })
+      console.log(this.data.goodsBaseInfo);
+
+      // 商家信息
+      const shops = new Shop(data.shopInfo);
+      this.setData({
+        shop: shops
+      })
+      console.log(this.data.shop);
+    }).catch(err => {})
   },
 
   /*** 生命周期函数--监听页面初次渲染完成 ***/

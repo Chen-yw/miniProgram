@@ -1,14 +1,13 @@
-// components/swiper/swiper.js
+// components/w-goods/w-goods.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
+    goods: {
       type: Array,
       value: []
     }
-    // isShow: false
   },
 
   /**

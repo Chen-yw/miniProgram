@@ -1,0 +1,75 @@
+/* pages/detail/childCpns/base-info/base-info.wxss */
+.base-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-title {
+  color: #222;
+  margin-top: 10rpx;
+}
+
+.info-price {
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+}
+
+.info-price .n-price {
+  font-size: 48rpx;
+  color: #ff5777;
+}
+
+.info-price .o-price {
+  font-size: 26rpx;
+  margin-left: 20rpx;
+  text-decoration: line-through;
+}
+
+.info-price .discount {
+  font-size: 24rpx;
+  padding: 4rpx 10rpx;
+  color: #fff;
+  background-color: #ff5777;
+  border-radius: 16rpx;
+  margin-left: 10rpx;
+  position: relative;
+  top: -18rpx;
+}
+
+.info-other{
+  display: flex;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+}
+
+.info-other-item {
+  flex: 1;
+  margin-left: 20rpx; 
+}
+
+.info-service {
+  display: flex;
+  /* justify-content: space-between; */
+  line-height: 60px;
+}
+
+.info-service-item {
+  flex: 1;
+}
+
+.info-service-item .img {
+  width: 14px;
+  height: 14px;
+
+  position: relative;
+  top: 2px;
+}
+
+.info-service-item .name {
+  font-size: 13px;
+  color: #333;
+}
+
+

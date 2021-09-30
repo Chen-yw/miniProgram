@@ -2,18 +2,15 @@
   width: 100%;
 }
 
-.goods {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20rpx;
+.fixed {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
-
-.goods > .item {
-  width: 48%;
-  position: relative;
-}
 
 /* .pressed {
   background-color: red;

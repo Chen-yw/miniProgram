@@ -1,3 +1,13 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
-<navigator open-type="navigateBack">返回</navigator>
+<!-- <navigator open-type="navigateBack">返回</navigator> -->
+<!-- 1，导航栏 -->
+<tab-control titles="{{titles}}"/>
+
+<!-- 2，轮播图 -->
+<w-swiper list="{{swiperImg}}"/>
+
+<!-- 3，商品基础信息 -->
+<w-base-info goods="{{goodsBaseInfo}}"/>
+
+<!-- 4，商家基本信息 -->
+<w-shop-info/>

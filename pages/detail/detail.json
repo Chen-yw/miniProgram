@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "tab-control": "/components/tab-control/tab-control",
+    "w-swiper": "/components/w-swiper/w-swiper",
+    "w-base-info": "/pages/detail/childCpns/w-base-info/w-base-info",
+    "w-shop-info": "/pages/detail/childCpns/w-shop-info/w-shop-info"
+  }
 }

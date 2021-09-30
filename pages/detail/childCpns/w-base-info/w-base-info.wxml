@@ -1,0 +1,22 @@
+<!--pages/detail/childCpns/base-info/base-info.wxml-->
+<view class="base-info">
+  <text class="info-title">{{goods.title}}</text>
+  <view class="info-price">
+    <text class="n-price">{{goods.newPrice}}</text>
+    <text class="o-price">{{goods.oldPrice}}</text>
+    <text class="discount">{{goods.discount}}</text>
+  </view>
+  <view class="info-other">
+    <text class="info-other-item">{{ goods.columns[0] }}</text>
+    <text class="info-other-item">{{ goods.columns[1] }}</text>
+    <text class="info-other-item">{{goods.services[goods.services.length - 1].name}}</text>
+  </view>
+  <view class="info-service">
+    <block wx:for="{{goods.services.length - 1}}" wx:key="key">
+      <view class="info-service-item">
+        <image class="img" src="{{goods.services[item - 1].icon ? goods.services[item - 1].icon : '//s11.mogucdn.com/p1/160607/upload_ie4tkmbtgqztomjqhezdambqgqyde_44x44.png'}}"/>
+        <text class="name">{{goods.services[item - 1].name}}</text>
+      </view>
+    </block>
+  </view>
+</view>

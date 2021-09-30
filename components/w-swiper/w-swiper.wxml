@@ -1,6 +1,6 @@
 <!--components/swiper/swiper.wxml-->
 <swiper 
-    class="swiper" 
+    class="{{list[0].image ? '' : 'swiper'}}" 
     circular 
     autoplay 
     interval="3000" 
@@ -10,7 +10,7 @@
     >
     <block wx:for="{{list}}" wx:key="index">
         <swiper-item class="swiper-item">
-            <image class="img" src="{{item.image}}" mode="widthFix" alt="" />
+            <image class="img" src="{{item.image ? item.image : item}}" mode="widthFix" alt="" />
         </swiper-item>
     </block>
 </swiper>

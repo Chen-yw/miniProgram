@@ -3,7 +3,7 @@
 <w-swiper list="{{banners}}"/>
 
 <!-- 2，推荐数据展示 -->
-<w-recommend list="{{recommends}}"/>
+<w-recommend list="{{recommends}}" bind:imageLoad="handleImageLoad"/>
 
 <!-- 3，展示本周流行 -->
 <view>
@@ -11,14 +11,13 @@
 </view>
 
 <!-- 4，tabControl -->
-<tab-control titles="{{['流行', '新款', '精选']}}" bind:itemClick="handleTabClick"/>
-
+<tab-control id="tabControl" class="{{isTabFixed ? 'fixed' : ''}}" titles="{{['流行', '新款', '精选']}}" bind:itemClick="handleTabClick"/>
+<tab-control wx:if="{{isTabFixed}}" titles="{{['流行', '新款', '精选']}}"/>
 <!-- 5，展示商品数据 -->
-<view class="goods">
-    <block wx:for="{{goods[currentType].list}}" wx:key="key">
-        <w-goods-item class="item" item="{{item}}"/>
-    </block>
-</view>
+<w-goods goods="{{goods[currentType].list}}"/>
+
+<!-- 6， 返回顶部 -->
+<w-back-top wx:if="{{showBackTop}}" />
 
 
 

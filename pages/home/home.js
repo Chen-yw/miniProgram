@@ -1,6 +1,7 @@
  /* 创建page及对象 js文件写逻辑 */
 import {getMultiData, getGoodsData} from '../../service/home.js'
-const types = ['pop', 'new', 'sell']
+const types = ['pop', 'new', 'sell'];
+const TOP_DISTANCE = 700;
 
 Page({
 
@@ -16,7 +17,10 @@ Page({
       new: {page: 0, list: []},
       sell: {page: 0, list: []}
     },
-    currentType: 'pop'
+    currentType: 'pop',
+    showBackTop: false,
+    isTabFixed: false,
+    tabScrollTop: 0
   },
 
   /**
@@ -107,16 +111,28 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    switch(this.data.currentType) {
-      case 'pop': 
-        this._getGoodsData('pop');
-        break;
-      case 'new': 
-        this._getGoodsData('new');
-        break;
-      case 'sell': 
-        this._getGoodsData('sell');
-        break;
+    // 上拉加载更多
+    this._getGoodsData(this.data.currentType);
+  },
+
+  /* 监听页面的滚动 */
+  onPageScroll(options) {
+    // 1，取出scrollTop
+    const scrollTop = options.scrollTop;
+    // 2，修改showBackTop属性
+    // 官方：不要在滚动的函数中频繁调用this.setData()
+    const flag1 = scrollTop >= TOP_DISTANCE;
+    if (flag1 != this.data.showBackTop) {
+      this.setData({
+        showBackTop: flag1
+      })
+    }
+    // 修改isTabFixed属性
+    const flag2 = scrollTop >= this.data.tabScrollTop;
+    if (flag2 != this.data.isTabFixed){
+      this.setData({
+        isTabFixed: flag2
+      })
     }
   },
 
@@ -147,6 +163,14 @@ Page({
     })
     console.log(this.data.currentType);
   },
+
+  // 图片加载完成
+  handleImageLoad() {
+    wx.createSelectorQuery().select('#tabControl').boundingClientRect(rect => {
+      // console.log(rect);
+      this.data.tabScrollTop = rect.top;
+    }).exec();
+  }
 
   
 })                                    

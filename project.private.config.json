@@ -29,6 +29,12 @@
           "pathName": "pages/cart/cart",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "详情页",
+          "pathName": "pages/detail/detail",
+          "query": "",
+          "scene": null
         }
       ]
     }

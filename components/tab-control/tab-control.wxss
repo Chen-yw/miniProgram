@@ -4,6 +4,7 @@
   height: 88rpx;
   align-items: center;
   /* background-color: orange; */
+  padding-bottom: 10rpx;
 }
 
 .tab_item {

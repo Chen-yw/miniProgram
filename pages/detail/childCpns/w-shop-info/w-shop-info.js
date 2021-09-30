@@ -1,14 +1,10 @@
-// components/swiper/swiper.js
+// pages/detail/childCpns/w-shop-info/w-shop-info.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
-    }
-    // isShow: false
+
   },
 
   /**

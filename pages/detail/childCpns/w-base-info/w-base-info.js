@@ -1,14 +1,13 @@
-// components/swiper/swiper.js
+// pages/detail/childCpns/base-info/base-info.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
+    goods: {
+      type: Object,
+      value: {}
     }
-    // isShow: false
   },
 
   /**
@@ -23,5 +22,5 @@ Component({
    */
   methods: {
 
-  }
+  },
 })

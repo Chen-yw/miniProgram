@@ -4,7 +4,8 @@
     "w-swiper": "/components/w-swiper/w-swiper",
     "w-recommend": "/pages/home/childCpns/w-recommend/w-recommend",
     "tab-control": "/components/tab-control/tab-control",
-    "w-goods-item": "/pages/home/childCpns/w-goods-item/w-goods-item"
+    "w-goods": "/components/w-goods/w-goods",
+    "w-back-top": "/components/w-back-top/w-back-top"
   },
   "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "dark",
